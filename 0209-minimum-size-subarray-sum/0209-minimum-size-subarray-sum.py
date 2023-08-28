@@ -1,14 +1,16 @@
-from sys import maxsize
 class Solution(object):
     def minSubArrayLen(self,s, nums):
-        res = maxsize
-        left, total = 0, 0
+        min_range=1e9
+        left =0
+        temp = 0
         
         for i in range(len(nums)):
-            total += nums[i]
-            while total >= s:
-                res = min(res, i - left + 1)
-                total -= nums[left]
+            temp += nums[i]
+            while temp >= s:
+                min_range = min(min_range, i - left + 1)
+                temp -= nums[left]
                 left += 1
-        
-        return res if res != maxsize else 0
+        if min_range == 1e9:
+            min_range= 0
+
+        return min_range
