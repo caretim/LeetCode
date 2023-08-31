@@ -4,6 +4,6 @@ class Solution(object):
             return False
         
         for i in range(len(s)):
-            if s.find(s[i]) != t.index(t[i]):
+            if s.index(s[i]) != t.index(t[i]):
                 return False
         return True
