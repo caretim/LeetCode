@@ -1,6 +1,19 @@
 class Solution(object):
     def isAnagram(self, s, t):
-        if sorted(s) == sorted(t):
-            return True
+        dict ={}
+        for i in s:
+            if i not in dict:
+                dict[i] = 1
+            else:
+                dict[i]+=1
         
-        return False
+        for i in t:
+            if i not in dict or dict[i]==0:
+                return False
+            dict[i]-=1
+            
+        for key,value in dict.items():
+            if value >0:
+                return False
+        
+        return True
