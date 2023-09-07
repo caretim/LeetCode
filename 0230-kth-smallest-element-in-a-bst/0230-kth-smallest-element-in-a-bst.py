@@ -1,16 +1,8 @@
-# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
 class Solution(object):
-
     def kthSmallest(self, root, k):
-        self.cnt = k
-        self.result = None
+        self.result = []
         self.find(root)
-        return self.result
+        return self.result[k-1]
         """
         :type root: TreeNode
         :type k: int
@@ -20,9 +12,5 @@ class Solution(object):
         if node is None:
             return             
         self.find(node.left)
-        self.cnt-=1
-        if self.cnt == 0:
-            self.result = node.val
-            return 
+        self.result.append(node.val)
         self.find(node.right)
-        
